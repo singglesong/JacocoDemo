@@ -24,7 +24,7 @@ import java.util.Map;
  */
 public final class CoreTutorial {
     /**
-     * The test target we want to see code coverage for.
+     * 查看代码覆盖率的测试目标.
      */
     public static class TestTarget implements Runnable {
 
@@ -45,14 +45,14 @@ public final class CoreTutorial {
 
 
     /**
-     * A class loader that loads classes from in-memory data.
+     * 从内存数据中装入类的类装入器
      */
     public static class MemoryClassLoader extends ClassLoader {
 
         private final Map<String, byte[]> definitions = new HashMap<>();
 
         /**
-         * Add a in-memory representation of a class.
+         * 添加类的内存表示.
          *
          * @param name
          *            name of the class
@@ -95,41 +95,39 @@ public final class CoreTutorial {
     public void execute() throws Exception {
         final String targetName = TestTarget.class.getName();
 
-        // For instrumentation and runtime we need a IRuntime instance
-        // to collect execution data:
+        // 对于运行时的插桩，需要使用IRuntime 实例来收集执行数据
         final IRuntime runtime = new LoggerRuntime();
 
-        // The Instrumenter creates a modified version of our test target class
-        // that contains additional probes for execution data recording:
+        // 插住器(Instrumenter)新建一个包含用于记录执行数据的额外探针的测试目标
         final Instrumenter instr = new Instrumenter(runtime);
         InputStream original = getTargetClass(targetName);
         final byte[] instrumented = instr.instrument(original, targetName);
         original.close();
 
-        // Now we're ready to run our instrumented class and need to startup the
-        // runtime first:
+        //现在我们准备运行我们的插装类(instrumented)，需要首先启动运行时:
         final RuntimeData data = new RuntimeData();
         runtime.startup(data);
 
-        // In this tutorial we use a special class loader to directly load the
-        // instrumented class definition from a byte[] instances.
+        // In this tutorial we use a special class loader to directly load the instrumented class definition from a byte[] instances.
+        // 在本教程中，我们使用一个特殊的类装入器从byte[]实例直接装入插装的类定义。
         final MemoryClassLoader memoryClassLoader = new MemoryClassLoader();
         memoryClassLoader.addDefinition(targetName, instrumented);
         final Class<?> targetClass = memoryClassLoader.loadClass(targetName);
 
         // Here we execute our test target class through its Runnable interface:
+        // 这里我们通过它的Runnable接口来执行我们的测试目标类:
         final Runnable targetInstance = (Runnable) targetClass.newInstance();
         targetInstance.run();
 
-        // At the end of test execution we collect execution data and shutdown
-        // the runtime:
+        // At the end of test execution we collect execution data and shutdown the runtime:
+        // 在测试执行结束时，我们收集执行数据并关闭运行时
         final ExecutionDataStore executionData = new ExecutionDataStore();
         final SessionInfoStore sessionInfos = new SessionInfoStore();
         data.collect(executionData, sessionInfos, false);
         runtime.shutdown();
 
-        // Together with the original class definition we can calculate coverage
-        // information:
+        // Together with the original class definition we can calculate coverage information:
+        // 结合原始的类定义，我们可以计算覆盖率信息:
         final CoverageBuilder coverageBuilder = new CoverageBuilder();
         final Analyzer analyzer = new Analyzer(executionData, coverageBuilder);
         original = getTargetClass(targetName);

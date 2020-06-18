@@ -44,6 +44,14 @@
 			<version>0.8.5</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.report -->
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.report</artifactId>
+			<version>0.8.5</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

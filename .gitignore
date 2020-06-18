@@ -31,7 +31,8 @@ mvnw.cmd
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-
+bin/
+coveragereport/
 ### STS ###
 .apt_generated
 .classpath

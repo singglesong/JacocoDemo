@@ -1,2 +1,26 @@
 # JacocoDemo
-jacoco 使用练习
+
+#### 被测试项目
+- 1.准备jacocoagent.jar 包，通过[jar包下载地址](https://www.eclemma.org/jacoco/)，下载后解压即可。这个是启动应用时主要用来插桩的jar包
+- 2.编辑javaagent参数   -javaagent:$jacocoJarPath=includes=$package,output=tcpserver,port=$port,address=$ip
+- - $jacocoJarPath : jacocoagent.jar的存放路径,例如：/home/admin/jacoco/jacocoagent.jar
+- - $package:启动时需要进行字节码插桩的包过滤，\*代表所有的class文件加载都需要进行插桩。假如代码都有相同的包前缀:com.example,你可以写成: includes=com.example.\*
+- - output=tcpserver:代表以tcpserver方式启动应用并进行插桩,一般不需要改动
+- - $port：jacoco开启的tcpserver的端口，请注意这个端口不能被占用
+- - $ip:这是对外开发的tcpserver的访问地址。配置为127.0.0.1的时候，dump数据只能在这台服务器上进行dump，就不能通过远程方式dump数据
+- 3.war启动方式，在tomcat的catalina.sh文件中添加以下内容
+> JAVA_OPTS="$JAVA_OPTS -javaagent:$jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1"
+
+- 4.java -jar 启动
+> java -javaagent: $jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1 -jar  xxxxxxxxxx.jar
+
+- 5.maven 启动
+> mvn clean install
+  export MAVEN_OPTS="-javaagent:$jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1"
+  mvn tomcat7:run -Dport=xxx
+  export MAVEN_OPTS=""
+- - mvn spring-boot 启动
+> mvn clean install
+  export MAVEN_OPTS="-javaagent:$jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1"
+  mvn spring-boot:run -Dport=xxx
+  export MAVEN_OPTS=""

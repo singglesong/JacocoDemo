@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import org.jacoco.core.analysis.Analyzer;
 import org.jacoco.core.analysis.CoverageBuilder;
@@ -17,8 +17,12 @@ import java.io.IOException;
  * single execution data store called jacoco.exec. The report contains no
  * grouping information.
  *
+ * 这个例子为eclipse之类的项目创建了一个HTML报告称为jacoco.exec的单执行数据存储。报告中没有分组信息。
+ *
  * The class files under test must be compiled with debug information, otherwise
  * source highlighting will not work.
+ *
+ * 被测试的类文件必须使用调试信息进行编译，否则源代码高亮显示无法工作。
  */
 public class ReportGenerator {
     private final String title;
@@ -37,10 +41,10 @@ public class ReportGenerator {
      */
     public ReportGenerator(final File projectDirectory) {
         this.title = projectDirectory.getName();
-        this.executionDataFile = new File(projectDirectory, "jacoco-client.exec");
-        this.classesDirectory = new File(projectDirectory, "bin");
-        this.sourceDirectory = new File(projectDirectory, "src");
-        this.reportDirectory = new File(projectDirectory, "coveragereport");
+        this.executionDataFile = new File( "E:/IdeaProjects/JacocoDemo/jacoco-client.exec");
+        this.classesDirectory = new File(projectDirectory, "target/classes");
+        this.sourceDirectory = new File(projectDirectory, "src/main/java");
+        this.reportDirectory = new File( "E:/IdeaProjects/JacocoDemo/coveragereport");
     }
 
     /**
@@ -118,7 +122,7 @@ public class ReportGenerator {
     public static void main(final String[] args) throws IOException {
 //        for (int i = 0; i < args.length; i++) {
             final ReportGenerator generator = new ReportGenerator(
-                    new File("E:/IdeaProjects/JacocoDemo"));
+                    new File("F:/Download/demo/demo"));
             generator.create();
 //        }
     }

@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import org.jacoco.core.data.*;
 
@@ -10,13 +10,15 @@ import java.util.Date;
 /**
  * This example reads execution data files given as program arguments and dumps
  * their content.
+ * 这个示例读取作为程序参数和转储提供的执行数据文件内容。
+ *
  */
 public final  class ExecDump {
     private final PrintStream out;
 
     /**
      * Creates a new example instance printing to the given stream.
-     *
+     * 创建打印到给定流的新示例实例
      * @param out
      *            stream for outputs
      */
@@ -26,7 +28,7 @@ public final  class ExecDump {
 
     /**
      * Run this example with the given parameters.
-     *
+     * 使用给定的参数运行此示例
      * @param args
      *            command line parameters
      * @throws IOException
@@ -86,6 +88,9 @@ public final  class ExecDump {
      *             in case of errors executing the example
      */
     public static void main(final String[] args) throws IOException {
-        new ExecDump(System.out).execute(args);
+        String str[] = new String[]
+        {"E:/IdeaProjects/JacocoDemo/jacoco-client.exec"
+        };
+        new ExecDump(System.out).execute(str);
     }
 }

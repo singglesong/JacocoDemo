@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 
 import org.jacoco.core.data.ExecutionDataWriter;
@@ -14,6 +14,8 @@ import java.net.Socket;
  * This example connects to a coverage agent that run in output mode
  * <code>tcpserver</code> and requests execution data. The collected data is
  * dumped to a local file.
+ *
+ * 此示例连接到以输出模式tcpserver运行的覆盖率代理，请求执行数据。收集的数据是转储到本地文件。
  */
 public class ExecutionDataClient {
     private static final String DESTFILE = "jacoco-client.exec";
@@ -24,6 +26,8 @@ public class ExecutionDataClient {
 
     /**
      * Starts the execution data request.
+     *
+     * 启动执行数据请求
      *
      * @param args
      * @throws IOException

@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import org.jacoco.core.analysis.Analyzer;
 import org.jacoco.core.analysis.CoverageBuilder;

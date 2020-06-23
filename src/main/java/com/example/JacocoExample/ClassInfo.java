@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import org.jacoco.core.analysis.Analyzer;
 import org.jacoco.core.analysis.IClassCoverage;
@@ -68,6 +68,9 @@ public final class ClassInfo implements ICoverageVisitor {
      *             in case of errors executing the example
      */
     public static void main(final String[] args) throws IOException {
-        new ClassInfo(System.out).execute(args);
+        String str[] = new String[]
+                {"E:/IdeaProjects/JacocoDemo/jacoco-client.exec"
+                };
+        new ClassInfo(System.out).execute(str);
     }
 }

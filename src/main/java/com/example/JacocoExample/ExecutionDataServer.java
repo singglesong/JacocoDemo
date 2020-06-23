@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import org.jacoco.core.data.*;
 import org.jacoco.core.runtime.RemoteControlReader;
@@ -14,6 +14,8 @@ import java.net.Socket;
  * This example starts a socket server to collect coverage from agents that run
  * in output mode <code>tcpclient</code>. The collected data is dumped to a
  * local file.
+ *
+ * 此示例启动一个套接字服务器，从运行的代理收集覆盖率在输出模式tcpclient收集到的数据被转储到本地文件。
  */
 public class ExecutionDataServer {
     private static final String DESTFILE = "jacoco-server.exec";

@@ -1,4 +1,4 @@
-package com.example.JacocoTest;
+package com.example.JacocoExample;
 
 import javax.management.MBeanServerConnection;
 import javax.management.MBeanServerInvocationHandler;
@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
  * This example connects to a JaCoCo agent that runs with the option
  * <code>jmx=yes</code> and requests execution data. The collected data is
  * dumped to a local file.
+ *
+ * 此示例连接到使用该选项运行的JaCoCo代理 jmx=yes，请求执行数据。收集的数据是转储到本地文件
  */
 public final  class MBeanClient {
     private static final String DESTFILE = "jacoco-client.exec";

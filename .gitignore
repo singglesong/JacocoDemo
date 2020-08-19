@@ -48,6 +48,8 @@ coveragereport/
 *.iws
 *.iml
 *.ipr
+*.exec
+*.exe
 
 ### NetBeans ###
 /nbproject/private/

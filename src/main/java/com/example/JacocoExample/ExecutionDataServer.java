@@ -17,7 +17,9 @@ import java.net.Socket;
  *
  * 此示例启动一个套接字服务器，从运行的代理收集覆盖率在输出模式tcpclient收集到的数据被转储到本地文件。
  */
+
 public class ExecutionDataServer {
+
     private static final String DESTFILE = "jacoco-server.exec";
 
     private static final String ADDRESS = "192.168.0.203";

@@ -89,7 +89,7 @@ public final  class ExecDump {
      */
     public static void main(final String[] args) throws IOException {
         String str[] = new String[]
-        {"E:/IdeaProjects/JacocoDemo/jacoco-client.exec"
+        {"E:/IdeaProjects/JacocoDemo/jacoco-tcpserver.exec"
         };
         new ExecDump(System.out).execute(str);
     }

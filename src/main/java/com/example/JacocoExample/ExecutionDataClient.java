@@ -18,7 +18,7 @@ import java.net.Socket;
  * 此示例连接到以输出模式tcpserver运行的覆盖率代理，请求执行数据。收集的数据是转储到本地文件。
  */
 public class ExecutionDataClient {
-    private static final String DESTFILE = "jacoco-client.exec";
+    private static final String DESTFILE = "jacoco-tcpserver.exec";
 
     private static final String ADDRESS = "192.168.0.203";
 

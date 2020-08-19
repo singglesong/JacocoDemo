@@ -41,7 +41,7 @@ public class ReportGenerator {
      */
     public ReportGenerator(final File projectDirectory) {
         this.title = projectDirectory.getName();
-        this.executionDataFile = new File( "E:/IdeaProjects/JacocoDemo/jacoco-client.exec");
+        this.executionDataFile = new File( "E:/IdeaProjects/JacocoDemo/jacoco-tcpserver.exec");
         this.classesDirectory = new File(projectDirectory, "target/classes");
         this.sourceDirectory = new File(projectDirectory, "src/main/java");
         this.reportDirectory = new File( "E:/IdeaProjects/JacocoDemo/coveragereport");
@@ -122,7 +122,7 @@ public class ReportGenerator {
     public static void main(final String[] args) throws IOException {
 //        for (int i = 0; i < args.length; i++) {
             final ReportGenerator generator = new ReportGenerator(
-                    new File("F:/Download/demo/demo"));
+                    new File("F:\\Download\\demo\\demo"));
             generator.create();
 //        }
     }

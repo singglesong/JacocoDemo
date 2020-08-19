@@ -13,6 +13,7 @@
 
 - 4.java -jar 启动
 > java -javaagent: $jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1 -jar  xxxxxxxxxx.jar
+>java -javaagent:F:\Download\demo\demo\src\main\resources\jacocoagent.jar=includes=com.example.demo.controller.*,output=tcpserver,port=2014,address=192.168.0.203 -jar  target/demo-0.0.1-SNAPSHOT.jar
 
 - 5.maven 启动
 > mvn clean install
@@ -24,3 +25,10 @@
   export MAVEN_OPTS="-javaagent:$jacocoJarPath=includes=*,output=tcpserver,port=2014,address=192.168.110.1"
   mvn spring-boot:run -Dport=xxx
   export MAVEN_OPTS=""
+
+- jacococli.jar 收集覆盖率
+> java -jar jacococli.jar dump --address localhost --port 6300 --destfile ./jacoco-demo.exec
+
+- jacococli.jar 转报告 
+> java -jar jacococli.jar report ./jacoco-demo.exec --classfiles /Users/oukotoshuu/IdeaProjects/demo/target/classes/com  --sourcefiles /Users/oukotoshuu/IdeaProjects/demo/src/main/java --html report --xml report.xml
+- - --classfiles 必须项,是编译后target 文件夹下的classes里面的com
